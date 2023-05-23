@@ -1,0 +1,4 @@
+Summarize the intention of every character in the story written between triple backticks (```) and output the result as json with keys character_name and intention_brief.
+```
+{{$INPUT}}
+```
