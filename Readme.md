@@ -23,7 +23,7 @@ namespace SemanticKernelLearning
         public static async Task Main()
         {
             var kernel = Kernel.Builder.Build();
-            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "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");
+            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "sk-wpg####HX641M####8eWT3Blbk####8v9ROHna####O8CHUO");
             Console.WriteLine("Initiated kernel...");
             var plugin = kernel.ImportSemanticSkillFromDirectory(Directory.GetCurrentDirectory(),"LearningPlugin");
             Console.WriteLine("Loadeded plugin...");
