@@ -8,7 +8,7 @@ namespace SemanticKernelLearning
         public static async Task Main()
         {
             var kernel = Kernel.Builder.Build();
-            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "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");
+            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "sk-SECRET-GOES-HERE");
             Console.WriteLine("Initiated kernel...");
             var plugin = kernel.ImportSemanticSkillFromDirectory(Directory.GetCurrentDirectory(),"LearningPlugin");
             Console.WriteLine("Loadeded plugin...");
@@ -21,6 +21,12 @@ namespace SemanticKernelLearning
             context.Set("BUSINESS_COUNTRY", "India");
             context.Set("BUSINESS_GEOGRAPHY", "Globally");
             result = await kernel.RunAsync(context, plugin["BusinessSummary"]);
+            Console.WriteLine($"Business summary\n{result}");
+            context = new ContextVariables();
+            context.Set("FORMAT","XML");
+            context.Set("STORY", story);
+            result = await kernel.RunAsync(context, plugin["StorySummarizer"]);
+            Console.WriteLine($"Story summary\n{result}");
         }
     }
 }

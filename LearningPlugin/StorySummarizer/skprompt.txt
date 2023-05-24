@@ -1,0 +1,4 @@
+Produce a summary of the story enclosed between --- in {{$FORMAT}} format along with a property to include {{LearningPlugin.CharacterIntention $STORY}} using key "character_intentions"
+---
+{{$STORY}}
+---

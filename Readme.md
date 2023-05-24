@@ -19,11 +19,12 @@ using Microsoft.SemanticKernel.Orchestration; // for ContextVariables
 
 namespace SemanticKernelLearning
 {
-        public static class SemanticKernelMain {
+    public static class SemanticKernelMain
+    {
         public static async Task Main()
         {
             var kernel = Kernel.Builder.Build();
-            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "sk-wpg####HX641M####8eWT3Blbk####8v9ROHna####O8CHUO");
+            kernel.Config.AddOpenAITextCompletionService("text-davinci-003", "sk-SECRET-GOES-HERE");
             Console.WriteLine("Initiated kernel...");
             var plugin = kernel.ImportSemanticSkillFromDirectory(Directory.GetCurrentDirectory(),"LearningPlugin");
             Console.WriteLine("Loadeded plugin...");
@@ -36,6 +37,12 @@ namespace SemanticKernelLearning
             context.Set("BUSINESS_COUNTRY", "India");
             context.Set("BUSINESS_GEOGRAPHY", "Globally");
             result = await kernel.RunAsync(context, plugin["BusinessSummary"]);
+            Console.WriteLine($"Business summary\n{result}");
+            context = new ContextVariables();
+            context.Set("FORMAT","XML");
+            context.Set("STORY", story);
+            result = await kernel.RunAsync(context, plugin["StorySummarizer"]);
+            Console.WriteLine($"Story summary\n{result}");
         }
     }
 }
@@ -99,3 +106,11 @@ Note: Frequency_penalty and presence_penalty are two parameters that can be used
 2. Presence_penalty: This parameter is used to encourage the model to include a diverse range of tokens in the generated text. It is a value that is subtracted from the log-probability of a token each time it is generated. **A higher presence_penalty value will result in the model being more likely to generate tokens that have not yet been included in the generated text.**
 
 Both of these parameters can be adjusted to influence the overall quality and diversity of the generated text. The optimal values for these parameters may vary depending on the specific use case and desired output.
+
+## Sampling
+
+GPT models convert text into embeddings, which are long array of real numbers. Tho do this the text is broken into tokens. There are many ways to get token from text, each with its own pros and cons. Token can be words, characters or sub-words. Tokens define how much memory and cost the training will take as well as the generality and diversity of generated text.
+
+OpenAI and Azure OpenAI uses a subword tokenization method called "Byte-Pair Encoding (BPE)" for its GPT-based models. BPE is a method that merges the most frequently occurring pairs of characters or bytes into a single token, until a certain number of tokens or a vocabulary size is reached.
+
+Ada has the smallest vocabulary size, with 50,000 tokens, and Davinci has the largest vocabulary size, with 60,000 tokens. Babbage and Curie have the same vocabulary size, with 57,000 tokens. The larger the vocabulary size, the more diverse and expressive the texts that the model can generate. However, the larger the vocabulary size, the more memory and computational resources that the model requires.
