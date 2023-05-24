@@ -12,6 +12,25 @@ command you also run all the commands that appeared before it. Commands will be 
 
 ## A sample program
 
+Note - Simply calling GPT with a prompt is called **Semantic Function** in the realm of Semantic Kernel (SK). Similarly a function with conventional code is called a **Native Function**. In the above example *CharacterIntention* is a semantic function. The input to a semantic function is specified using the `{{$INPUT}}` placeholder.
+
+Note - A semantic function is written as a skprompt.txt and a config.json file in a directory. The directory name is the function name. A directory of functions is called a **Plugin**.
+
+Folder structure -
+
+    root
+        LearningPlugin
+            CharacterIntention
+                skprompt.txt
+                config.json
+            BusinessSummary
+                skprompt.txt
+                config.json
+            StorySummarizer
+                skprompt.txt
+                config.json
+        Program.cs
+
 Program.cs
 ```C#
 using Microsoft.SemanticKernel;
@@ -65,25 +84,6 @@ Produce a summary of the story enclosed between --- in {{$FORMAT}} format along 
 {{$STORY}}
 ---
 ```
-
-Folder structure -
-
-    root
-        LearningPlugin
-            CharacterIntention
-                skprompt.txt
-                config.json
-            BusinessSummary
-                skprompt.txt
-                config.json
-            StorySummarizer
-                skprompt.txt
-                config.json
-        Program.cs
-
-Note - Simply calling GPT with a prompt is called **Semantic Function** in the realm of Semantic Kernel (SK). Similarly a function with conventional code is called a **Native Function**. In the above example *CharacterIntention* is a semantic function. The input to a semantic function is specified using the `{{INPUT}}` placeholder.
-
-Note - A semantic function is written as a skprompt.txt and a config.json file in a directory. The directory name is the function name.
 
 ## Model size and usages
 
