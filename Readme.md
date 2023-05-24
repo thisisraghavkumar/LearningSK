@@ -58,6 +58,13 @@ BusinessSummary/skprompt.txt
 ```
 Generate a {{FORMAT}} for {{BUSINESS_NAME}} which is located in {{BUSINESS_COUNTRY}} and serves {{BUSINESS_GEOGRAPHY}} customers using keys name, orgLocation and customerLocation.
 ```
+StorySummarizer/skprompt.txt
+```
+Produce a summary of the story enclosed between --- in {{$FORMAT}} format along with a property to include {{LearningPlugin.CharacterIntention $STORY}} using key "character_intentions"
+---
+{{$STORY}}
+---
+```
 
 Folder structure -
 
@@ -67,6 +74,9 @@ Folder structure -
                 skprompt.txt
                 config.json
             BusinessSummary
+                skprompt.txt
+                config.json
+            StorySummarizer
                 skprompt.txt
                 config.json
         Program.cs
