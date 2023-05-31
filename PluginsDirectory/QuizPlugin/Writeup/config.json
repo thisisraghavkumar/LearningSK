@@ -1,0 +1,20 @@
+{
+    "schema": 1,
+    "type":  "completion",
+    "description": "Generate a write up on a given topic",
+    "completion": {
+        "max_tokens": "3000",
+        "temperature": 1,
+        "top_p": 0.1,
+        "presence_penalty": 1,
+        "frequency_penalty": 2
+    },
+    "inputs": {
+        "parameters": [
+            {
+                "name":"INPUT",
+                "description": "The topic on which a write up will be generated"
+            }
+        ]
+    }
+}

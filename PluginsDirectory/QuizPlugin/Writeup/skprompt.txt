@@ -1,0 +1,2 @@
+After the triple dash (---) list down, in no more than 750 words, the outcomes of the historical event "{{$INPUT}}". Do include notable dates as well as the name of notable personalitites involved in the event enclosed within quotes (").
+---

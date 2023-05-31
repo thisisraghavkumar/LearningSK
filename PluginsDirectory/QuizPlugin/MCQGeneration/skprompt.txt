@@ -1,0 +1,14 @@
+Consider the following write up between triple dashses (---)
+---
+{{INPUT}}
+---
+
+Generate 5 multiple choice questions from the above writeup and three possible choices for each question. Only one of the alternatives among the three should be correct for each question.
+
+Generate the output after colon (:) in the following format
+Question: An example question asking student about some information present in the writeup?
+Option a) First alternative
+Option b) Second alternative
+Option c) Third alternative
+
+:

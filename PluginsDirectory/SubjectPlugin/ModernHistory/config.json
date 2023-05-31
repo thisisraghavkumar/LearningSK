@@ -1,0 +1,12 @@
+{
+    "schema": 1,
+    "type": "completion",
+    "description": "Generates the name of a notable historical event that happened after 1800",
+    "completion": {
+        "max_tokens": 30,
+        "temperature": 0,
+        "top_p": 0.05,
+        "presence_penalty": 1.5,
+        "frequency_penalty": 2
+    }
+}
